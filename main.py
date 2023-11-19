@@ -1,16 +1,21 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import requests
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def get_crypto_data():
+    response = requests.get("https://raw.githubusercontent.com/atilsamancioglu/K21-JSONDataSet/master/crypto.json")
+    if response.status_code == 200:
+        # print("success")
+        # print(response.json())
+        # for crypto in response.json():
+        #    print(crypto["currency"])
+        return response.json()
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+crypto_response = get_crypto_data()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+user_input = input("Enter your crypto currency:")
+
+for crypto in crypto_response:
+    if crypto["currency"] == user_input:
+        print(crypto["price"])
+        break
