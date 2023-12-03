@@ -80,4 +80,4 @@ def get_data_threading(urls):
 urls = ["https://postman-echo.com/delay/3"] * 10
 # get_data_threading(urls) #4sn
 # get_data_sync(urls) #40sn
-asyncio.run(get_data_async_but_as_wrapper(urls))
+asyncio.run(get_data_async_but_as_wrapper(urls)) # 4sn
